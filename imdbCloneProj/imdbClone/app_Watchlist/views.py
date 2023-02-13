@@ -9,4 +9,15 @@ def movie_list(request):
     data = {'movies': list(qs_MoviesAll.values())}
      
     return JsonResponse(data)
+
+def movie_details(request, pk):
+    qs_Movie = MovieModel.objects.get(pk=pk)
+    print(qs_Movie)
+    data = {
+        'name': qs_Movie.name,
+        'description': qs_Movie.description,
+        'active': qs_Movie.active
+    }
+    return JsonResponse(data)
+
     
