@@ -16,6 +16,7 @@ class TestView(APIView):
      return Response(data)
    def post(self, request, *args, **kwargs):
      serializer = StudentSerializer(data=request.data)
+     print("serializer: ", serializer)
      if serializer.is_valid():
        serializer.save()
        return Response(serializer.data)
