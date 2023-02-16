@@ -4,7 +4,7 @@ from rest_framework.response import Response
 
 def movie_list(request):
     movies = MovieModel.objects.all()
-    print(movies)
+    print("movies: ", movies)
     serialized_movies = MovieModelSerializer(movies)
     print("serialized_movies: ", serialized_movies)
     return Response(serialized_movies.data)

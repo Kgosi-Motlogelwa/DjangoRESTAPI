@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("apiauth/", include("rest_framework.urls")),
     path("", TestView.as_view(), name="test"),
-    path("api/token/", obtain_auth_token, name="obtain")
+    #path("api/token/", obtain_auth_token, name="obtain")
 ]

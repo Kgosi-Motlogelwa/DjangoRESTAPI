@@ -8,7 +8,7 @@ from newApp.models import StudentModel
 
 # Inherits APIViews
 class TestView(APIView):
-  permission_classes = (IsAuthenticated, )
+  # permission_classes = (IsAuthenticated, )
 
   def get(self, request, *args, **kwargs):
     qs = StudentModel.objects.all() # Get all the model objects (entries in database)
