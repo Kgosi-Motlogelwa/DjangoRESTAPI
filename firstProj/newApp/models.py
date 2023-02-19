@@ -10,3 +10,4 @@ class StudentModel(models.Model):
   # Returns a human readable string version of the object
   def __str__(self):
     return self.age
+  
