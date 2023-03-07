@@ -44,7 +44,7 @@ const NotePage = () => {
 
   const updateNote = async() => {
     // alert("UpdateNote Ran")
-    fetch(`/api/notes/${id}/update/` , {
+    fetch(`/api/notes/${id}/` , {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ const NotePage = () => {
 
   const deleteNote = async() => {
     alert("DELETE")
-    fetch(`/api/notes/${id}/delete/` , {
+    fetch(`/api/notes/${id}/` , {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ const NotePage = () => {
 
   const createNote = async() => {
     console.log("Note being created: ", newNote)
-    fetch(`/api/notes/create/`, {
+    fetch(`/api/notes/`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -92,7 +92,6 @@ const NotePage = () => {
     }
     // Go back to home page
     navigate('/')
-    
   }
   
     return (

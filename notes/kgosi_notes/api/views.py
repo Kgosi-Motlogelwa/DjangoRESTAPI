@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import NotesModel
 from .serializers import NotesModelSerializer
+from .utils import getAllNotes, getOneNote, createNote, updateNote, deleteNote
 
 # Create your views here.
 
@@ -46,17 +47,17 @@ def getRoutes(request): # Specifies all routes in application
     ]
     return Response(routes) # safe means can return more types of data not just a python dictionary
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def getNotes(request):
-    qs_notes = NotesModel.objects.all()
-    serializer = NotesModelSerializer(qs_notes, many=True)
+    return getAllNotes(request)
 
-    
-    return Response(serializer.data)
-
-@api_view(['GET'])
+@api_view(['GET', 'DELETE', 'PUT'])
 def getNote(request, pk):
-    qs_note = NotesModel.objects.get(id=pk)
-    serializer = NotesModelSerializer(qs_note, many=False)
+    if request.method == 'GET': 
+        return getOneNote(request, pk)
     
-    return Response(serializer.data)
+    if request.method == 'PUT':
+        return updateNote(request, pk)
+        
+    if request.method == 'DELETE':
+        return deleteNote(request, pk)
